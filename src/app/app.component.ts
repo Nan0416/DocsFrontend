@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   isShowingDropdown: boolean = false;
   currentUrl: string = '';
   isShowUI: boolean = true;
-  isWelcomePage: boolean = true;
   constructor(
     private router: Router,
     private windowResize: WindowResizeService,
@@ -45,11 +44,7 @@ export class AppComponent implements OnInit {
       filter((e: Event)=> e instanceof NavigationEnd)
     ).subscribe((e: NavigationEnd)=>{
       this.currentUrl = e.urlAfterRedirects;
-      if(this.currentUrl == '/'){
-        this.isWelcomePage = true;
-      }else{
-        this.isWelcomePage = false;
-      }
+      
     });
   }
 

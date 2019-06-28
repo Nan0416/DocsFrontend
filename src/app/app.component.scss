@@ -7,14 +7,25 @@ $vertical-item-height: 50px;
 $vertical-item-width: 50px;
 $vertical-section-min-height: 500px;
 
-$text-color: rgb(194,194,194);
+$header-item-text-color: rgb(194,194,194);
 $header-background-color: rgb(16, 13, 22);
-$background-line-color: rgb(194,194,194);
+$background-border-color: rgb(194,194,194);
 $header-background-color-hover: rgb(31, 28, 40);
 
-body{
-    color: $text-color;
+
+/**
+* body{
+    wrapper{
+        header: vertical/horizontal{
+            header-section{
+                header-item
+            }
+            dropdown
+        }
+        content
+    }
 }
+*/
 .wrapper{
   display: flex;
 }
@@ -35,7 +46,6 @@ body{
 }
 .header{
     background-color: $header-background-color;
-    color: $text-color;
     position:relative;
     box-sizing: border-box;
     display: flex;
@@ -90,7 +100,7 @@ body{
   font-family: Rubik,Lato,"Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
   font-weight: 500;
   font-size: 15px;
-  color: $text-color;
+  color: $header-item-text-color;
 }
 .header-item:hover span{
     color: white;
@@ -126,7 +136,7 @@ body{
     z-index: 400;
     box-sizing: border-box;
     height: auto;
-    border: 1px $background-line-color solid;
+    border: 1px $background-border-color solid;
     border-radius: 3px;
     background-color:white;
 }
@@ -136,7 +146,7 @@ ul.dropdown-section{
     margin:0;
 }
 #first-dropdown-section, #second-dropdown-section{
-    border-bottom: 1px $background-line-color solid;
+    border-bottom: 1px $background-border-color solid;
 }
 .dropdown-item{
     display: inline-block;

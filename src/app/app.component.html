@@ -1,5 +1,5 @@
 <div id="main-wrapper" *ngIf="isShowUI" (click)="closeDropdown()" [ngClass]="{'wrapper': true, 'vertical-wrapper': isVertical, 'horizontal-wrapper': !isVertical}">
-  <div *ngIf="!isWelcomePage" id="main-header" [ngClass]="{'header': true, 'vertical-header': isVertical, 'horizontal-header': !isVertical}">
+  <div id="main-header" [ngClass]="{'header': true, 'vertical-header': isVertical, 'horizontal-header': !isVertical}">
   <!--header-->
 
   <!-- vertical header-->
@@ -23,7 +23,10 @@
 
   <!--horizontal header-->
   <ul *ngIf="!isVertical" id="second-header-section" class="header-section">
-    <li *ngIf="user != null" id="user-icon" class="header-item" (click)="toggleDropdown($event)"><span style="display:inline-block;height:100%; vertical-align: middle;"></span><img width="40px" height="40px" [src]="user.profile"></li>
+    <li *ngIf="user != null" id="user-icon" class="header-item" (click)="toggleDropdown($event)">
+      <span style="display:inline-block;height:100%; vertical-align: middle;"></span>
+      <img width="40px" height="40px" [src]="user.profile">
+    </li>
     <li *ngIf="user == null" class="header-item"><a routerLink="/"><span><i class="fas fa-user"></i></span></a></li>
   </ul>
 
@@ -44,6 +47,7 @@
     </ul>
   </div>
   </div>
+
   <div id="main-content" [ngClass]="{'content': true, 'vertical-content': isVertical}">
       <router-outlet></router-outlet>
       <div id="main-footer" *ngIf="!isWelcomePage" class="footer responsive-footer">
