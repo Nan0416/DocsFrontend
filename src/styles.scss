@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+$content-background: rgb(245, 248, 250);
+$content-border: 1px rgb(230, 233, 236) solid;
+$text-color: rgb(55,74,96);
+$text-color-selected: rgb(45, 40, 45);
+
+$content-border: 1px rgb(230, 233, 236) solid;
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 350px; // iphone 6
+    background-color:$content-background;
+ }
+ a{
+     text-decoration: none;
+ }
+ a:active{
+     text-decoration: none;
+ }
+ ul{
+     list-style: none;
+ }
+
+ span{
+    font-family: Rubik,Lato,"Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
+ }

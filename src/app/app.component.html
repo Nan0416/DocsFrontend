@@ -1,20 +1,59 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div id="main-wrapper" *ngIf="isShowUI" (click)="closeDropdown()" [ngClass]="{'wrapper': true, 'vertical-wrapper': isVertical, 'horizontal-wrapper': !isVertical}">
+  <div *ngIf="!isWelcomePage" id="main-header" [ngClass]="{'header': true, 'vertical-header': isVertical, 'horizontal-header': !isVertical}">
+  <!--header-->
+
+  <!-- vertical header-->
+  <ul *ngIf="isVertical" id="first-header-section" class="header-section">
+    <li *ngIf="user != null" class="header-item"><a routerLink="/dashboard"><span><i class="fas fa-chart-line"></i></span></a></li>
+    <li class="header-item"><a routerLink="/docs"><span><i class="fas fa-folder-open"></i></span></a></li>
+    <li class="header-item"><a routerLink="/news"><span><i class="far fa-newspaper"></i></span></a></li>
+  </ul>
+  <!-- horizontal header -->
+  <ul *ngIf="!isVertical" id="first-header-section" class="header-section">
+    <li *ngIf="user != null" class="header-item"><a routerLink="/dashboard"><span>Dashboard</span></a></li>
+    <li class="header-item"><a routerLink="/docs"><span>Docs</span></a></li>
+    <li class="header-item"><a routerLink="/news"><span>News</span></a></li>
+  </ul>
+
+  <!--vertical header-->
+  <ul *ngIf="isVertical" id="second-header-section" class="header-section">
+    <li *ngIf="user != null" id="user-icon" class="header-item"><a routerLink="/user"><span style="display:inline-block;height:100%; vertical-align: middle;"></span><img width="35px" height="35px" [src]="user.profile"></a></li>
+    <li *ngIf="user == null" class="header-item"><a routerLink="/"><span><i class="fas fa-user"></i></span></a></li>
+  </ul>
+
+  <!--horizontal header-->
+  <ul *ngIf="!isVertical" id="second-header-section" class="header-section">
+    <li *ngIf="user != null" id="user-icon" class="header-item" (click)="toggleDropdown($event)"><span style="display:inline-block;height:100%; vertical-align: middle;"></span><img width="40px" height="40px" [src]="user.profile"></li>
+    <li *ngIf="user == null" class="header-item"><a routerLink="/"><span><i class="fas fa-user"></i></span></a></li>
+  </ul>
+
+  <!--user dropdown-->
+  <div *ngIf="!isVertical && isShowingDropdown" id="user-dropdown" class="dropdown">
+
+    <!--width = 200 = 1 border + 10 padding + 178 width + 10 padding + 1 border-->
+    <ul id="first-dropdown-section" class="dropdown-section">
+        <li class="dropdown-item"><span>Hello <span style="font-weight:800; padding: 0">{{user.username}}</span></span></li>
+    </ul>
+    <ul id="second-dropdown-section" class="dropdown-section">
+      <li class="dropdown-item clickable"><a routerLink="activate/s"><span>Account</span></a></li>
+      <li class="dropdown-item clickable"><a routerLink="keys"><span>API Keys</span></a></li>
+      <li class="dropdown-item clickable"><a routerLink="settings"><span>Settings</span></a></li>
+    </ul>
+    <ul id="second-dropdown-section" class="dropdown-section">
+      <li class="dropdown-item clickable" (click)="logout()"><span>Logout</span></li>
+    </ul>
+  </div>
+  </div>
+  <div id="main-content" [ngClass]="{'content': true, 'vertical-content': isVertical}">
+      <router-outlet></router-outlet>
+      <div id="main-footer" *ngIf="!isWelcomePage" class="footer responsive-footer">
+        <div id="first-footer-section" class="footer-section">
+          <span>monitor.sousys.com</span><a href="https://github.com/Nan0416" target="_blank"><span>Github</span></a>
+        </div>
+        <div id="second-footer-section" class="footer-section">
+            <a href = "mailto:support@sousys.com"><span>support@sousys.com</span></a>
+        </div>
+      </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
